@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <!-- Dependencies: JQuery and GMaps API should be loaded first -->
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- CSS and JS for our code -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-gmaps-latlon-picker.css" />
+    <script src="/javascripts/jquery-gmaps-latlon-picker.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#btnFind').on('click', function() {
+                var txtLat = $('#txtLat').val();
+                var txtLong = $('#txtLong').val();
+                $('#lat').val(txtLat);
+                $('#long').val(txtLong);
+                $('#target').submit();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Modern Web Applications</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <form id='target' action="/find" method="get">
+
+                    <input id="long" name="long" type="hidden" />
+                    <input id="lat" name="lat" type="hidden" />
+                    <input id="btnFind" type="button" class="btn btn-primary" value="Find 3 points near here">
+                </form>
+                <form action="/insert" method="post">
+                    <fieldset class="gllpLatlonPicker">
+                        <div class="gllpMap">Google Maps</div>
+                        <br/> lat/lon:
+                        <input id="txtLat" name="lat" type="text" class="gllpLatitude" value="41.017765" /> /
+                        <input id="txtLong" name="long" type="text" class="gllpLongitude" value="-91.96729010000001" /> zoom: <input type="text" class="gllpZoom" value="17" />
+                        <input type="button" class="gllpUpdateButton btn btn-primary" value="update map">
+                        <br/> name <input name="name" type="text" class="locationName" /> category <input name="category" type="text" class="locationCategory" />
+                        <input type="submit" class="btn btn-success" value="Add">
+                    </fieldset>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

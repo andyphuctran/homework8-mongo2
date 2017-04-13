@@ -1,0 +1,7 @@
+<h1>Three points:</h1>
+<% for(var i = 0; i < data.length; i++) { %>
+    <pre>Name: <%= data[i].name %></pre>
+    <pre>Category: <%= data[i].category %></pre>
+    <pre>Location:(<%= data[i].location.0 %>, <%= data[i].location.1 %>)</pre>
+    <% } %>
+        <pre><a href="/">Back to Home</a></pre>
